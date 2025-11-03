@@ -27,5 +27,5 @@ def main():
             cancelar_reserva()
         elif opcao == 3:
             sair()
-        time.sleep(4)
+        time.sleep(5)
 main()
