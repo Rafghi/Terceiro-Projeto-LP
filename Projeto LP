@@ -1,5 +1,6 @@
 import os
 import sys
+import time 
 
 def mostrar_menu():
     print("1 - Cadastrar nova reserva")
@@ -16,14 +17,15 @@ def sair():
     print("Ok, muito obrigado por visitar nosso site!")
 
 def main():
-    os.system("clear")
-    mostrar_menu()
-    opcao = int(input("Qual opção deseja: "))
-    if opcao == 1:
-        cadastrar_reserva()
-    if opcao == 2:
-        cancelar_reserva()
-    if opcao == 3:
-        sair()
-
+    while True:
+        os.system("clear")
+        mostrar_menu()
+        opcao = int(input("Qual opção deseja: "))
+        if opcao == 1:
+            cadastrar_reserva()
+        elif opcao == 2:
+            cancelar_reserva()
+        elif opcao == 3:
+            sair()
+        time.sleep(4)
 main()
