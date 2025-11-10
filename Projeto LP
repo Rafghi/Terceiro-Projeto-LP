@@ -1,18 +1,23 @@
 import os
 import sys
-import time 
+import time
+from datetime import datetime
 
 def mostrar_menu():
-    print("1 - Cadastrar nova reserva")
-    print("2 - Cancelar Reserva")
-    print("3 - Sair")
+    print("         1 - Cadastrar nova reserva")
+    print("         2 - Listar Reservas")
+    print("         3 - Calcular Estatistícas")
+    print("         4 - Cancelar Reserva")
+    print("         5 - Sair")
 
 def cadastrar_reserva():
     print("Vamos cadastrar sua nova reserva")
-
+def listar_reservas():
+    print("Vamos listar as reservas existentes")
+def calcular_stats():
+    print("Vamos calcular as estatistícas")
 def cancelar_reserva():
     print("Ok, iremos cancelar sua reserva")
-
 def sair():
     print("Ok, muito obrigado por visitar nosso site!")
 
@@ -20,12 +25,22 @@ def main():
     while True:
         os.system("clear")
         mostrar_menu()
+        print("")
         opcao = int(input("Qual opção deseja: "))
         if opcao == 1:
             cadastrar_reserva()
         elif opcao == 2:
-            cancelar_reserva()
+            listar_reservas()
         elif opcao == 3:
+            calcular_stats()
+        elif opcao == 4:
+            cancelar_reserva()
+        elif opcao == 5:
             sair()
-        time.sleep(5)
+            break
+        else:
+            print("Essa função não existe! Tente novamente.")
+            time.sleep(3)
+            continue
+        time.sleep(3)
 main()
