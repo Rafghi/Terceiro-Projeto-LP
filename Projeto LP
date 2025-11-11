@@ -3,6 +3,18 @@ import sys
 import time
 from datetime import datetime
 
+disp_st = 10
+disp_pr = 5
+disp_lu = 3
+reservas = 0
+total_reservas = 0
+maior_reservas = 0
+nome_reserva_cara = ""
+nome_tempo_maior = ""
+maior_tempo = 0
+
+formato = "%d/%m/%Y"
+
 def mostrar_menu():
     print("         1 - Cadastrar nova reserva")
     print("         2 - Listar Reservas")
@@ -11,15 +23,17 @@ def mostrar_menu():
     print("         5 - Sair")
 
 def cadastrar_reserva():
-    print("Vamos cadastrar sua nova reserva")
+    print("Vamos cadastrar sua nova reserva...")
 def listar_reservas():
-    print("Vamos listar as reservas existentes")
+    print("Vamos listar as reservas existentes...")
 def calcular_stats():
-    print("Vamos calcular as estatistícas")
+    print("Vamos calcular as estatistícas...")
 def cancelar_reserva():
-    print("Ok, iremos cancelar sua reserva")
+    print("Ok, iremos cancelar sua reserva...")
 def sair():
     print("Ok, muito obrigado por visitar nosso site!")
+def nome_responsavel():
+    print("")
 
 def main():
     while True:
@@ -42,5 +56,11 @@ def main():
             print("Essa função não existe! Tente novamente.")
             time.sleep(3)
             continue
-        time.sleep(3)
+        time.sleep(2)
+        nome_responsavel()
+        nome = input("Qual o nome do respónsavel da reserva: ").strip()
+        if nome == "":
+            print("Nome inválido! Tente novamente.")
+            time.sleep(2)
+            continue
 main()
