@@ -13,8 +13,6 @@ nome_reserva_cara = ""
 nome_tempo_maior = ""
 maior_tempo = 0
 
-formato = "%d/%m/%Y"
-
 def mostrar_menu():
     print("         1 - Cadastrar nova reserva")
     print("         2 - Listar Reservas")
@@ -34,6 +32,16 @@ def sair():
     print("Ok, muito obrigado por visitar nosso site!")
 def nome_responsavel():
     print("")
+
+def check():
+    formato = "%d/%m/%Y"
+    check_in = input("Digite a data de Check-In (No modelo dd/mm/aaaa): ")
+    check_in = datetime.strptime(check_in, formato).date()
+    check_out = input("Digite a data de Check-Out (No modelo dd/mm/aaaa): ")
+    check_out = datetime.strptime(check_out, formato).date()
+    os.system('clear')
+    tempo_dias = (check_out - check_in).days
+    quant_dias = tempo_dias
 
 def main():
     while True:
@@ -63,4 +71,6 @@ def main():
             print("Nome inválido! Tente novamente.")
             time.sleep(2)
             continue
+        check()
+        
 main()
