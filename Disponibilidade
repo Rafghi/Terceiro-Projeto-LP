@@ -1,0 +1,17 @@
+total_quartos = {'Standard': 10,
+                 'Premium': 5,
+                 'Luxo': 3}
+
+reservas = []
+def consultar_disponibilidade(checkin, checkout, tipo_quarto, quantidade_quartos):
+    for r in reservas:
+        if r['tipo_quarto'] == tipo_quarto:
+            if checkin < r['checkout'] and checkout > r['checkin']:
+                quartos_consumidos += r['quantidade_quartos']
+
+    quartos_disponiveis = total_quartos[tipo_quarto] - quartos_consumidos
+
+    if quantidade_quartos > quartos_disponiveis:
+        return False
+    else:
+        return True
