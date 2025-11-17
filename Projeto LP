@@ -2,23 +2,29 @@ import os
 import sys
 import time
 from datetime import datetime
+import json
 
-disp_st = 10
-disp_pr = 5
-disp_lu = 3
+total_quartos = {'Standard': 10,
+                 'Premium': 5,
+                 'Luxo': 3}
 reservas = 0
 total_reservas = 0
 maior_reservas = 0
 nome_reserva_cara = ""
 nome_tempo_maior = ""
 maior_tempo = 0
+nome_arquivo = "dados.json"
+agenda_telefonica = {"joao": 2345678, "Maria": 345678}
 
 def mostrar_menu():
     print("         1 - Cadastrar nova reserva")
     print("         2 - Listar Reservas")
     print("         3 - Calcular Estatistícas")
     print("         4 - Cancelar Reserva")
-    print("         5 - Sair")
+    print("         5 - Consultar Disponibilidade")
+    print("         6 - Salvar Dados")
+    print("         7 - Carregar Dados")
+    print("         8 - Sair")
 
 def cadastrar_reserva():
     print("Vamos cadastrar sua nova reserva...")
@@ -26,8 +32,22 @@ def listar_reservas():
     print("Vamos listar as reservas existentes...")
 def calcular_stats():
     print("Vamos calcular as estatistícas...")
+reservas = []
+def consultar_disponibilidade(checkin, checkout, tipo_quarto, quantidade_quartos):
+    print("Iremos consultar as disponibilidades...")
+    for r in reservas:
+        if r['tipo_quarto'] == tipo_quarto:
+            if checkin < r['checkout'] and checkout > r['checkin']:
+                quartos_consumidos += r['quantidade_quartos']
 def cancelar_reserva():
     print("Ok, iremos cancelar sua reserva...")
+def salvar_dados():
+    with open(nome_arquivo, "wb") as f:
+        json.dump(agenda_telefonica, f)
+def carregar_dados():
+    with open(nome_arquivo, "r") as f:
+        dados_carregados = json.load(f)
+        return dados_carregados
 def sair():
     print("Ok, muito obrigado por visitar nosso site!")
 def nome_responsavel():
@@ -58,6 +78,12 @@ def main():
         elif opcao == 4:
             cancelar_reserva()
         elif opcao == 5:
+            consultar_disponibilidade()
+        elif opcao == 6:
+            salvar_dados()
+        elif opcao == 7:
+            carregar_dados()
+        elif opcao == 8:
             sair()
             break
         else:
