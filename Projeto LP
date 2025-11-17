@@ -4,9 +4,8 @@ import time
 from datetime import datetime
 import pickle
 
-total_quartos = {'Standard': 10,
-                 'Premium': 5,
-                 'Luxo': 3}
+total_quartos = {'Standard': 10, 'Premium': 5, 'Luxo': 3}
+
 reservas = []
 total_reservas = 0
 maior_reservas = 0
@@ -14,6 +13,8 @@ nome_reserva_cara = ""
 nome_tempo_maior = ""
 maior_tempo = 0
 nome_arquivo = "reservas.pkl"
+quartos_consumidos = 0
+nome = ''
 agenda_telefonica = {"joao": 2345678, "Maria": 345678}
 
 def mostrar_menu():
@@ -59,8 +60,12 @@ def check():
     check_out = input("Digite a data de Check-Out (No modelo dd/mm/aaaa): ")
     check_out = datetime.strptime(check_out, formato).date()
     os.system('clear')
-    tempo_dias = (check_out - check_in).days
-    quant_dias = tempo_dias
+
+def quartos():
+    print("Abaixo, estarão listados os quartos disponíveis")
+    print(".............")
+    print(total_quartos)
+
 
 def main():
     while True:
@@ -97,5 +102,7 @@ def main():
             time.sleep(2)
             continue
         check()
+        quartos()
+
         
 main()
