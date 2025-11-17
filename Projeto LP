@@ -59,7 +59,6 @@ def check():
     check_in = datetime.strptime(check_in, formato).date()
     check_out = input("Digite a data de Check-Out (No modelo dd/mm/aaaa): ")
     check_out = datetime.strptime(check_out, formato).date()
-    os.system('clear')
 
 def quartos():
     print("Abaixo, estarão listados os quartos disponíveis")
@@ -103,6 +102,7 @@ def main():
             continue
         check()
         quartos()
+        time.sleep(3)
 
         
 main()
